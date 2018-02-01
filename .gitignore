@@ -1,0 +1,6 @@
+packages/
+.vs/
+PinkLemonade.Android.UI/bin/
+PinkLemonade.Android.UI/obj/
+PinkLemonade.Core/bin/
+PinkLemonade.Core/obj/

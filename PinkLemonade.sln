@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkLemonade.Android.UI", "PinkLemonade.Android.UI\PinkLemonade.Android.UI.csproj", "{A76120FE-F75E-4B3F-8BE1-0BAB7519C158}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkLemonade.Core", "PinkLemonade.Core\PinkLemonade.Core.csproj", "{547C8BBE-34EA-459E-A430-2BB0E04F6FDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A76120FE-F75E-4B3F-8BE1-0BAB7519C158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A76120FE-F75E-4B3F-8BE1-0BAB7519C158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A76120FE-F75E-4B3F-8BE1-0BAB7519C158}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A76120FE-F75E-4B3F-8BE1-0BAB7519C158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A76120FE-F75E-4B3F-8BE1-0BAB7519C158}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A76120FE-F75E-4B3F-8BE1-0BAB7519C158}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{547C8BBE-34EA-459E-A430-2BB0E04F6FDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{547C8BBE-34EA-459E-A430-2BB0E04F6FDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{547C8BBE-34EA-459E-A430-2BB0E04F6FDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{547C8BBE-34EA-459E-A430-2BB0E04F6FDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5196E6C4-5FF1-41B1-8123-F4B266082D36}
+	EndGlobalSection
+EndGlobal
