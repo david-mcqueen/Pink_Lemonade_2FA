@@ -4,15 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:id="@+id/myButton"
+        android:id="@+id/buttonAddToken"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:text="@string/add_token" />
     <Button
-        android:text="Refresh"
+        android:text="@string/refresh_tokens"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/buttonRefresh" />
+    <Button
+        android:text="@string/view_tokens"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonViewTokens" />
     <TextView
         android:text="Label"
         android:textAppearance="?android:attr/textAppearanceMedium"

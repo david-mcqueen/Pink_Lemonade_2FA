@@ -3,6 +3,8 @@ using Android.Widget;
 using Android.OS;
 using ZXing.Mobile;
 using PinkLemonade.Core;
+using Android.Content;
+using System;
 
 namespace PinkLemonade.Android.UI
 {
@@ -22,8 +24,9 @@ namespace PinkLemonade.Android.UI
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button button = FindViewById<Button>(Resource.Id.myButton);
+            Button addButton = FindViewById<Button>(Resource.Id.buttonAddToken);
             Button refreshButton = FindViewById<Button>(Resource.Id.buttonRefresh);
+            Button viewTokensButton = FindViewById<Button>(Resource.Id.buttonViewTokens);
 
             TextView textLabel = FindViewById<TextView>(Resource.Id.textLabel);
             TextView textIssuer = FindViewById<TextView>(Resource.Id.textIssuer);
@@ -31,8 +34,14 @@ namespace PinkLemonade.Android.UI
             TextView textTime = FindViewById<TextView>(Resource.Id.textTime);
             TextView textToken = FindViewById<TextView>(Resource.Id.textToken);
 
-            button.Click += delegate { button.Text = string.Format("{0} clicks!", count++); };
-            button.Click += async (sender, e) =>
+            viewTokensButton.Click += (sender, e) =>
+            {
+                var intent = new Intent(this, typeof(List));
+                //intent.PutStringArrayListExtra("countries", countries);
+                StartActivity(intent);
+            };
+
+            addButton.Click += async (sender, e) =>
             {
 
                 // Initialize the scanner first so it can track the current context
@@ -58,6 +67,9 @@ namespace PinkLemonade.Android.UI
 
             refreshButton.Click += delegate
             {
+                if (manager.Token == null)
+                    return;
+
                 var token = manager.Token;
 
                 textToken.Text = token.ComputeTotp();

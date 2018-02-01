@@ -2,4 +2,7 @@
 <resources>
   <string name="hello">Hello World, Click Me!</string>
   <string name="app_name">PinkLemonade.Android.UI</string>
+  <string name="add_token">Add Token</string>
+  <string name="refresh_tokens">Refresh</string>
+  <string name="view_tokens">View Tokens</string>
 </resources>
