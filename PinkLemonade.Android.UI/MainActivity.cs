@@ -37,6 +37,7 @@ namespace PinkLemonade.Android.UI
             viewTokensButton.Click += (sender, e) =>
             {
                 var intent = new Intent(this, typeof(List));
+                //intent.PutExtra("token_manager", manager);
                 //intent.PutStringArrayListExtra("countries", countries);
                 StartActivity(intent);
             };
@@ -51,29 +52,26 @@ namespace PinkLemonade.Android.UI
 
                 var result = await scanner.Scan();
 
-                var token = new Core.Models.ScannedToken(result.Text);
+                var newToken = manager.TokenScanned(result.Text);
 
-                var newToken = manager.TokenScanned(token);
-
-
-                textLabel.Text = token.Label;
-                textIssuer.Text = token.Issuer;
-                textSecret.Text = token.Secret;
-                textToken.Text = newToken.ComputeTotp();
-                textTime.Text = newToken.RemainingSeconds().ToString();
+                textLabel.Text = newToken.Label;
+                textIssuer.Text = newToken.Issuer;
+                textSecret.Text = newToken.Secret;
+                textToken.Text = newToken.TokenCode;
+                textTime.Text = newToken.RemainingSecondsString;
 
             };
 
 
             refreshButton.Click += delegate
             {
-                if (manager.Token == null)
+                var token = manager.GetFirstToken();
+
+                if (token == null)
                     return;
 
-                var token = manager.Token;
-
-                textToken.Text = token.ComputeTotp();
-                textTime.Text = token.RemainingSeconds().ToString();
+                textToken.Text = token.TokenCode;
+                textTime.Text = token.RemainingSecondsString;
             };
 
         }

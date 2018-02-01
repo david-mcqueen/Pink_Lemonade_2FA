@@ -28,8 +28,6 @@ namespace PinkLemonade.Core.Models
                 if (string.IsNullOrWhiteSpace(Secret))
                     return new byte[0];
 
-                
-                
                 var bytes = Base32Encoding.ToBytes(Secret);
                 return bytes;
             }
@@ -49,7 +47,6 @@ namespace PinkLemonade.Core.Models
 
             var secret = queryParts["secret"].ToLower();
 
-
             Secret = queryParts["secret"].ToLower();
             Issuer = queryParts["issuer"];
 
@@ -58,7 +55,6 @@ namespace PinkLemonade.Core.Models
             // Check the RFC specs for what we expect as a 2FA token
             // Allow for different algorithmns
             Label = path[path.Length-1];
-            
         }
     }
 }

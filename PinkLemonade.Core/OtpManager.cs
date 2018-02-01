@@ -7,21 +7,43 @@ namespace PinkLemonade.Core
 {
     public class OtpManager
     {
-        public Totp Token;
+        private List<StoredToken> _tokens { get; set; }
 
-        public Totp TokenScanned(ScannedToken token)
+        public OtpManager()
         {
-            if (token != null)
-            {
-                var totp = new Totp(token.SecretAsBytes);
+            _tokens = new List<StoredToken>();
+        }
 
-                var code = totp.ComputeTotp(DateTime.UtcNow);
-                var remainingTime = totp.RemainingSeconds();
-                Token = totp;
-                return totp;
-            }
+        public StoredToken TokenScanned(string raw)
+        {
+            var parsed = new ScannedToken(raw);
+            return TokenScanned(parsed);
+        }
 
-            return new Totp(new byte[1]);
+        public StoredToken TokenScanned(ScannedToken token)
+        {
+            if (token == null)
+                return null;
+
+            var totp = new Totp(token.SecretAsBytes);
+
+            var code = totp.ComputeTotp(DateTime.UtcNow);
+            var remainingTime = totp.RemainingSeconds();
+
+
+            var newToken = new StoredToken(totp, token);
+            _tokens.Add(newToken);
+
+            return newToken;
+            
+        }
+
+        public StoredToken GetFirstToken()
+        {
+            if(_tokens.Count > 0)
+                return _tokens.ToArray()[0];
+
+            return null;
         }
 
     }

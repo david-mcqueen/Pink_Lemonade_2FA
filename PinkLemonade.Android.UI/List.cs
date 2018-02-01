@@ -23,6 +23,7 @@ namespace PinkLemonade.Android.UI
         {
             base.OnCreate(savedInstanceState);
 
+
             SetContentView(Resource.Layout.CustomList);
             listView = FindViewById<ListView>(Resource.Id.List);
 
