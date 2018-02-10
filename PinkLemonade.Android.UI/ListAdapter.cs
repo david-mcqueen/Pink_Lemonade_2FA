@@ -47,8 +47,8 @@ namespace PinkLemonade.Android.UI
             View view = convertView;
             if (view == null) // no view to re-use, create new
                 view = context.LayoutInflater.Inflate(Resource.Layout.CustomListCell, null);
-            view.FindViewById<TextView>(Resource.Id.Token).Text = item.Issuer;
-            view.FindViewById<TextView>(Resource.Id.Timeout).Text = item.Label;
+            view.FindViewById<TextView>(Resource.Id.Token).Text = item.TokenCode;
+            view.FindViewById<TextView>(Resource.Id.Timeout).Text = item.RemainingSeconds.ToString();
 
             return view;
         }
