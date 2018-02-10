@@ -27,6 +27,24 @@
       android:textColor="#FF267F00"
       android:paddingLeft="100dip"
       />
+
+    <TextView
+      android:id="@+id/Issuer"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="14dip"
+      android:textColor="#FF267F00"
+      android:paddingLeft="115dip"
+      />
+
+    <TextView
+      android:id="@+id/Label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="14dip"
+      android:textColor="#FF267F00"
+      android:paddingLeft="115dip"
+      />
     
   </LinearLayout>
   

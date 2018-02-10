@@ -49,8 +49,16 @@ namespace PinkLemonade.Android.UI
                 view = context.LayoutInflater.Inflate(Resource.Layout.CustomListCell, null);
             view.FindViewById<TextView>(Resource.Id.Token).Text = item.TokenCode;
             view.FindViewById<TextView>(Resource.Id.Timeout).Text = item.RemainingSeconds.ToString();
+            view.FindViewById<TextView>(Resource.Id.Issuer).Text = item.Issuer;
+            view.FindViewById<TextView>(Resource.Id.Label).Text = item.Label;
 
             return view;
+        }
+
+
+        public void Refresh()
+        {
+            NotifyDataSetChanged();
         }
     }
 

@@ -24,16 +24,23 @@ namespace PinkLemonade.Android.UI
         {
             base.OnCreate(savedInstanceState);
 
-
             SetContentView(Resource.Layout.CustomList);
             listView = FindViewById<ListView>(Resource.Id.List);
+            Button refreshButton = FindViewById<Button>(Resource.Id.buttonRefresh);
 
             OtpManager manager = new OtpManager();
             tableItems.AddRange(manager.LoadTokens());
 
-            listView.Adapter = new ListAdapter(this, tableItems);
+            var adpt = new ListAdapter(this, tableItems);
+            listView.Adapter = adpt;
 
             listView.ItemClick += OnListItemClick;
+
+            refreshButton.Click += delegate
+            {
+                adpt.Refresh();
+                Toast.MakeText(this, "REFRESH", ToastLength.Short).Show();
+            };
         }
 
         protected void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)

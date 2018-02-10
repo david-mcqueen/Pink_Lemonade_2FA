@@ -3,21 +3,24 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-  
-  <TextView
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:text="Tokens"
-      android:textSize="30dp"
-      android:background="#00000000"
-      android:textColor="#FF267F00"
-      android:textStyle="bold"
-      android:padding="5dp"/>
-  
-  <ListView android:id="@+id/List"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:cacheColorHint="#FFDAFF7F"
-	/>
-  
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Tokens"
+        android:textSize="30dp"
+        android:background="#00000000"
+        android:textColor="#FF267F00"
+        android:textStyle="bold"
+        android:padding="5dp" />
+    <Button
+        android:text="@string/refresh_tokens"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonRefresh" />
+    <ListView
+        android:id="@+id/List"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#FFDAFF7F" />
 </LinearLayout>
