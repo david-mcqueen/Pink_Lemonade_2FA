@@ -5,6 +5,8 @@ using ZXing.Mobile;
 using PinkLemonade.Core;
 using Android.Content;
 using System;
+using PinkLemonade.DataAccess.Entities;
+using PinkLemonade.DataAccess;
 
 namespace PinkLemonade.Android.UI
 {
@@ -42,6 +44,7 @@ namespace PinkLemonade.Android.UI
                 StartActivity(intent);
             };
 
+
             addButton.Click += async (sender, e) =>
             {
 
@@ -60,11 +63,14 @@ namespace PinkLemonade.Android.UI
                 textToken.Text = newToken.TokenCode;
                 textTime.Text = newToken.RemainingSecondsString;
 
+
+
             };
 
 
             refreshButton.Click += delegate
             {
+                manager.LoadTokens();
                 var token = manager.GetFirstToken();
 
                 if (token == null)

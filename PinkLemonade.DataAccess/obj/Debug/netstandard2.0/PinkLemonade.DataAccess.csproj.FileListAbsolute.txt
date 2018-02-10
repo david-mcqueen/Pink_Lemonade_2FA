@@ -1,0 +1,9 @@
+D:\Repo\Android\Xamarin\BarcodeScanner\Authy\PinkLemonade\PinkLemonade\PinkLemonade.DataAccess\bin\Debug\netstandard2.0\PinkLemonade.DataAccess.deps.json
+D:\Repo\Android\Xamarin\BarcodeScanner\Authy\PinkLemonade\PinkLemonade\PinkLemonade.DataAccess\bin\Debug\netstandard2.0\PinkLemonade.DataAccess.dll
+D:\Repo\Android\Xamarin\BarcodeScanner\Authy\PinkLemonade\PinkLemonade\PinkLemonade.DataAccess\obj\Debug\netstandard2.0\PinkLemonade.DataAccess.csprojResolveAssemblyReference.cache
+D:\Repo\Android\Xamarin\BarcodeScanner\Authy\PinkLemonade\PinkLemonade\PinkLemonade.DataAccess\obj\Debug\netstandard2.0\PinkLemonade.DataAccess.csproj.CoreCompileInputs.cache
+D:\Repo\Android\Xamarin\BarcodeScanner\Authy\PinkLemonade\PinkLemonade\PinkLemonade.DataAccess\obj\Debug\netstandard2.0\PinkLemonade.DataAccess.AssemblyInfoInputs.cache
+D:\Repo\Android\Xamarin\BarcodeScanner\Authy\PinkLemonade\PinkLemonade\PinkLemonade.DataAccess\obj\Debug\netstandard2.0\PinkLemonade.DataAccess.AssemblyInfo.cs
+D:\Repo\Android\Xamarin\BarcodeScanner\Authy\PinkLemonade\PinkLemonade\PinkLemonade.DataAccess\bin\Debug\netstandard2.0\PinkLemonade.DataAccess.pdb
+D:\Repo\Android\Xamarin\BarcodeScanner\Authy\PinkLemonade\PinkLemonade\PinkLemonade.DataAccess\obj\Debug\netstandard2.0\PinkLemonade.DataAccess.dll
+D:\Repo\Android\Xamarin\BarcodeScanner\Authy\PinkLemonade\PinkLemonade\PinkLemonade.DataAccess\obj\Debug\netstandard2.0\PinkLemonade.DataAccess.pdb

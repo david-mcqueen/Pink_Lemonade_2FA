@@ -13,12 +13,12 @@ using PinkLemonade.Core.Models;
 
 namespace PinkLemonade.Android.UI
 {
-    class ListAdapter : BaseAdapter<ScannedToken>
+    class ListAdapter : BaseAdapter<Token>
     {
-        List<ScannedToken> items;
+        List<Token> items;
         Activity context;
 
-        public ListAdapter(Activity context, List<ScannedToken> items)
+        public ListAdapter(Activity context, List<Token> items)
             : base()
         {
             this.context = context;
@@ -30,7 +30,7 @@ namespace PinkLemonade.Android.UI
             return position;
         }
 
-        public override ScannedToken this[int position]
+        public override Token this[int position]
         {
             get { return items[position]; }
         }

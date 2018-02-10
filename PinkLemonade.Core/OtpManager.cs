@@ -1,5 +1,6 @@
 ﻿using OtpNet;
 using PinkLemonade.Core.Models;
+using PinkLemonade.DataAccess;
 using System;
 using System.Collections.Generic;
 
@@ -7,43 +8,52 @@ namespace PinkLemonade.Core
 {
     public class OtpManager
     {
-        private List<StoredToken> _tokens { get; set; }
+        private List<Token> _tokens { get; set; }
+
+        public List<Token> Tokens
+        {
+            get
+            {
+                return _tokens;
+            }
+        }
 
         public OtpManager()
         {
-            _tokens = new List<StoredToken>();
+            _tokens = new List<Token>();
         }
 
-        public StoredToken TokenScanned(string raw)
+        /// <summary>
+        /// Takes a raw barcode, converts it to Token, and stores a new entry in the DB
+        /// </summary>
+        /// <param name="raw"></param>
+        /// <returns></returns>
+        public Token TokenScanned(string raw)
         {
-            var parsed = new ScannedToken(raw);
-            return TokenScanned(parsed);
-        }
+            var newToken = new Token(raw);
+            newToken.StoreToken();
 
-        public StoredToken TokenScanned(ScannedToken token)
-        {
-            if (token == null)
-                return null;
-
-            var totp = new Totp(token.SecretAsBytes);
-
-            var code = totp.ComputeTotp(DateTime.UtcNow);
-            var remainingTime = totp.RemainingSeconds();
-
-
-            var newToken = new StoredToken(totp, token);
             _tokens.Add(newToken);
 
             return newToken;
-            
         }
 
-        public StoredToken GetFirstToken()
+        public Token GetFirstToken()
         {
             if(_tokens.Count > 0)
                 return _tokens.ToArray()[0];
 
             return null;
+        }
+
+        public List<Token> LoadTokens()
+        {
+            _tokens.Clear();
+
+            foreach (var item in DataProvider.GetTokens())
+                _tokens.Add(new Token(item));
+
+            return _tokens;
         }
 
     }

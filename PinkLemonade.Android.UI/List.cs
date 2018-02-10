@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using PinkLemonade.Core;
 using PinkLemonade.Core.Models;
 
 namespace PinkLemonade.Android.UI
@@ -16,7 +17,7 @@ namespace PinkLemonade.Android.UI
     [Activity(Label = "List")]
     public class List : Activity
     {
-        List<ScannedToken> tableItems = new List<ScannedToken>();
+        List<Token> tableItems = new List<Token>();
         ListView listView;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -27,8 +28,8 @@ namespace PinkLemonade.Android.UI
             SetContentView(Resource.Layout.CustomList);
             listView = FindViewById<ListView>(Resource.Id.List);
 
-            tableItems.Add(new ScannedToken("otpauth://totp/ACME%20Co:john@example.com?secret=HXDMVJECJJWSRB3HWIZR4IFUGFTMXBOZ&issuer=ACME%20Co&algorithm=SHA1&digits=6&period=30"));
-            tableItems.Add(new ScannedToken("otpauth://totp/ACME%20Co:john@example.com?secret=HXDMVJECJJWSRB3HWIZR4IFUGFTMXBOZ&issuer=ACME%20Co&algorithm=SHA1&digits=6&period=30"));
+            OtpManager manager = new OtpManager();
+            tableItems.AddRange(manager.LoadTokens());
 
             listView.Adapter = new ListAdapter(this, tableItems);
 
