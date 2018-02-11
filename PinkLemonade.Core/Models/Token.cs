@@ -91,6 +91,11 @@ namespace PinkLemonade.Core.Models
             }
         }
 
+        public void RemoveToken()
+        {
+            DataProvider.DeleteToken(_storedToken.ID);
+        }
+
         public void StoreToken()
         {
             DataProvider.StoreToken(_storedToken);

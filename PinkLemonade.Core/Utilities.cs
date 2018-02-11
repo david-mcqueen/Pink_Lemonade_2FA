@@ -13,9 +13,9 @@ namespace PinkLemonade.Core
             var uri = new Uri(raw);
             var queryParts = HttpUtility.ParseQueryString(uri.Query);
             var path = uri.GetLeftPart(UriPartial.Path).Split('/');
+            
 
-
-            var labelParts = path[path.Length - 1].Split(':');
+            var labelParts = HttpUtility.HtmlDecode(path[path.Length - 1]).Split(':');
             var label = labelParts[labelParts.Length - 1];
 
             return new StoredToken()

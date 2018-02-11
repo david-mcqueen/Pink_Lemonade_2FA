@@ -34,6 +34,7 @@ namespace PinkLemonade.Android.UI
             listView.Adapter = adpt;
 
             listView.ItemClick += OnListItemClick;
+            listView.ItemLongClick += OnListItemLongClick;
 
             TimerCallback tmCallback = (obj => 
             {
@@ -48,8 +49,16 @@ namespace PinkLemonade.Android.UI
         {
             var listView = sender as ListView;
             var t = tableItems[e.Position];
-            Toast.MakeText(this, "CATS", ToastLength.Short).Show();
-            Console.WriteLine("Clicked on " + "CATS");
+            Toast.MakeText(this, "Copied to Clipboard", ToastLength.Short).Show();
+        }
+
+        protected void OnListItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)
+        {
+            var listView = sender as ListView;
+            var t = tableItems[e.Position];
+            tableItems.Remove(t);
+            t.RemoveToken();
+            Toast.MakeText(this, "Token Removed", ToastLength.Short).Show();
         }
 
     }
