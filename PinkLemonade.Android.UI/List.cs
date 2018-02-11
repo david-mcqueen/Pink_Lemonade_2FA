@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -26,7 +26,6 @@ namespace PinkLemonade.Android.UI
 
             SetContentView(Resource.Layout.CustomList);
             listView = FindViewById<ListView>(Resource.Id.List);
-            Button refreshButton = FindViewById<Button>(Resource.Id.buttonRefresh);
 
             OtpManager manager = new OtpManager();
             tableItems.AddRange(manager.LoadTokens());
@@ -36,13 +35,15 @@ namespace PinkLemonade.Android.UI
 
             listView.ItemClick += OnListItemClick;
 
-            refreshButton.Click += delegate
+            TimerCallback tmCallback = (obj => 
             {
-                adpt.Refresh();
-                Toast.MakeText(this, "REFRESH", ToastLength.Short).Show();
-            };
+                RunOnUiThread(() => adpt.Refresh());
+            });
+
+            Timer timer = new Timer(tmCallback, "refresh", 1000, 1000);
         }
 
+        // TODO:- This should copy to clipboard
         protected void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             var listView = sender as ListView;
@@ -50,5 +51,6 @@ namespace PinkLemonade.Android.UI
             Toast.MakeText(this, "CATS", ToastLength.Short).Show();
             Console.WriteLine("Clicked on " + "CATS");
         }
+
     }
 }

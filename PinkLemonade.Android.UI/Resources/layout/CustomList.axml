@@ -13,14 +13,12 @@
         android:textColor="#FF267F00"
         android:textStyle="bold"
         android:padding="5dp" />
-    <Button
-        android:text="@string/refresh_tokens"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/buttonRefresh" />
+
     <ListView
         android:id="@+id/List"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:dividerHeight="10.0sp"
+        android:divider="@android:color/transparent"
         android:cacheColorHint="#FFDAFF7F" />
 </LinearLayout>

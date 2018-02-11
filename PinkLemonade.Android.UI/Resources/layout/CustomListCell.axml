@@ -2,49 +2,50 @@
 <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:background="@android:color/white">
   
   <LinearLayout android:id="@+id/Text"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="10dip">
+    android:background="@android:color/white">
+    
+    <TextView
+      android:id="@+id/Issuer"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="20dip"
+      android:textColor="#FF267F00"
+    android:paddingLeft="10dip"
+      />
+    
     
     <TextView
       android:id="@+id/Token"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:textColor="#FF7F3300"
-      android:textSize="20dip"
+      android:textColor="#2121c0"
+      android:textSize="50dip"
       android:textStyle="italic"
-      />
-    
-    <TextView
-      android:id="@+id/Timeout"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="14dip"
-      android:textColor="#FF267F00"
-      android:paddingLeft="100dip"
-      />
-
-    <TextView
-      android:id="@+id/Issuer"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="14dip"
-      android:textColor="#FF267F00"
-      android:paddingLeft="115dip"
+    android:paddingLeft="10dip"
       />
 
     <TextView
       android:id="@+id/Label"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:textSize="14dip"
+      android:textSize="20dip"
       android:textColor="#FF267F00"
-      android:paddingLeft="115dip"
+    android:paddingLeft="10dip"
       />
+
+    <ProgressBar android:id="@+id/ProgressHorizontal"
+             android:layout_width="match_parent"
+             android:layout_height="5dp"
+             android:layout_centerHorizontal="true"
+             android:background="@android:color/holo_blue_light"
+             style="@android:style/Widget.ProgressBar.Horizontal" />
+    
     
   </LinearLayout>
   
