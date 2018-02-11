@@ -27,27 +27,16 @@ namespace PinkLemonade.Android.UI
             // Get our button from the layout resource,
             // and attach an event to it
             Button addButton = FindViewById<Button>(Resource.Id.buttonAddToken);
-            Button refreshButton = FindViewById<Button>(Resource.Id.buttonRefresh);
             Button viewTokensButton = FindViewById<Button>(Resource.Id.buttonViewTokens);
-
-            TextView textLabel = FindViewById<TextView>(Resource.Id.textLabel);
-            TextView textIssuer = FindViewById<TextView>(Resource.Id.textIssuer);
-            TextView textSecret = FindViewById<TextView>(Resource.Id.textecret);
-            TextView textTime = FindViewById<TextView>(Resource.Id.textTime);
-            TextView textToken = FindViewById<TextView>(Resource.Id.textToken);
 
             viewTokensButton.Click += (sender, e) =>
             {
                 var intent = new Intent(this, typeof(List));
-                //intent.PutExtra("token_manager", manager);
-                //intent.PutStringArrayListExtra("countries", countries);
                 StartActivity(intent);
             };
 
-
             addButton.Click += async (sender, e) =>
             {
-
                 // Initialize the scanner first so it can track the current context
                 MobileBarcodeScanner.Initialize(Application);
 
@@ -55,31 +44,8 @@ namespace PinkLemonade.Android.UI
 
                 var result = await scanner.Scan();
 
-                var newToken = manager.TokenScanned(result.Text);
-
-                textLabel.Text = newToken.Label;
-                textIssuer.Text = newToken.Issuer;
-                textSecret.Text = newToken.Secret;
-                textToken.Text = newToken.TokenCode;
-                textTime.Text = newToken.RemainingSecondsString;
-
-
-
+                manager.TokenScanned(result.Text);
             };
-
-
-            refreshButton.Click += delegate
-            {
-                manager.LoadTokens();
-                var token = manager.GetFirstToken();
-
-                if (token == null)
-                    return;
-
-                textToken.Text = token.TokenCode;
-                textTime.Text = token.RemainingSecondsString;
-            };
-
         }
     }
 }

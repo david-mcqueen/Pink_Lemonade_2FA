@@ -73,7 +73,7 @@ namespace PinkLemonade.Android.UI
                 return Color.OrangeRed;
 
             if (progress < 10)
-                return Color.PaleVioletRed;
+                return Color.DarkOrange;
 
             if (progress < 15)
                 return Color.YellowGreen;

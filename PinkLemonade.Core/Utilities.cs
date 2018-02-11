@@ -14,6 +14,10 @@ namespace PinkLemonade.Core
             var queryParts = HttpUtility.ParseQueryString(uri.Query);
             var path = uri.GetLeftPart(UriPartial.Path).Split('/');
 
+
+            var labelParts = path[path.Length - 1].Split(':');
+            var label = labelParts[labelParts.Length - 1];
+
             return new StoredToken()
             {
                 TokenRaw = raw,
@@ -24,7 +28,7 @@ namespace PinkLemonade.Core
                 // TODO:- HTML parse the label, split on any colon.
                 // Check the RFC specs for what we expect as a 2FA token
                 // Allow for different algorithmns
-                Label = path[path.Length - 1]
+                Label = label
             };
         }
     }
