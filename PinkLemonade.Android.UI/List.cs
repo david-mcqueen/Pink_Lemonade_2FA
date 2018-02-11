@@ -26,12 +26,28 @@ namespace PinkLemonade.Android.UI
             base.OnCreate(savedInstanceState);
 
             OtpManager manager = new OtpManager();
+            tableItems.AddRange(manager.LoadTokens());
 
             SetContentView(Resource.Layout.CustomList);
+
             listView = FindViewById<ListView>(Resource.Id.List);
-
-
             Button addButton = FindViewById<Button>(Resource.Id.buttonAddToken);
+
+
+            var adpt = new ListAdapter(this, tableItems);
+            listView.Adapter = adpt;
+
+            listView.ItemClick += OnListItemClick;
+            listView.ItemLongClick += OnListItemLongClick;
+
+
+            TimerCallback tmCallback = (obj => 
+            {
+                RunOnUiThread(() => adpt.Refresh());
+            });
+
+            Timer timer = new Timer(tmCallback, "refresh", 1000, 1000);
+
 
             addButton.Click += async (sender, e) =>
             {
@@ -42,34 +58,27 @@ namespace PinkLemonade.Android.UI
 
                 var result = await scanner.Scan();
 
+                // No results? No new token
+                if (result == null)
+                    return;
+
                 var newToken = manager.TokenScanned(result.Text);
 
                 tableItems.Add(newToken);
             };
-
-
-            tableItems.AddRange(manager.LoadTokens());
-
-            var adpt = new ListAdapter(this, tableItems);
-            listView.Adapter = adpt;
-
-            listView.ItemClick += OnListItemClick;
-            listView.ItemLongClick += OnListItemLongClick;
-
-            TimerCallback tmCallback = (obj => 
-            {
-                RunOnUiThread(() => adpt.Refresh());
-            });
-
-            Timer timer = new Timer(tmCallback, "refresh", 1000, 1000);
         }
+
 
         // TODO:- This should copy to clipboard
         protected void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            var listView = sender as ListView;
             var t = tableItems[e.Position];
+
+            var clipboard = (ClipboardManager)GetSystemService(ClipboardService);
+            clipboard.Text = t.TokenCode;
+
             Toast.MakeText(this, "Copied to Clipboard", ToastLength.Short).Show();
+
         }
 
         protected void OnListItemLongClick(object sender, AdapterView.ItemLongClickEventArgs e)

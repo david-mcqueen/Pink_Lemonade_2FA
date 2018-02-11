@@ -69,10 +69,7 @@ namespace PinkLemonade.Android.UI
 			public const int buttonAddToken = 2131034112;
 			
 			// aapt resource value: 0x7f050007
-			public const int buttonViewTokens = 2131034119;
-			
-			// aapt resource value: 0x7f050008
-			public const int contentFrame = 2131034120;
+			public const int contentFrame = 2131034119;
 			
 			static Id()
 			{
@@ -94,13 +91,10 @@ namespace PinkLemonade.Android.UI
 			public const int CustomListCell = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Main = 2130903042;
+			public const int zxingscanneractivitylayout = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int zxingscanneractivitylayout = 2130903043;
-			
-			// aapt resource value: 0x7f030004
-			public const int zxingscannerfragmentlayout = 2130903044;
+			public const int zxingscannerfragmentlayout = 2130903043;
 			
 			static Layout()
 			{
