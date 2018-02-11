@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -54,6 +55,7 @@ namespace PinkLemonade.Android.UI
             var pb = view.FindViewById<ProgressBar>(Resource.Id.ProgressHorizontal);
 
             pb.SetProgress(CalculateProgress(item.RemainingSeconds), false);
+            pb.ProgressDrawable.SetColorFilter(GetProgressbarColour(item.RemainingSeconds), PorterDuff.Mode.Multiply);
 
             return view;
         }
@@ -63,6 +65,22 @@ namespace PinkLemonade.Android.UI
             var pct = (double)remainingTime / (double)30;
 
             return (int)(pct * 100);
+        }
+
+        private Color GetProgressbarColour(int progress)
+        {
+            if (progress < 5)
+                return Color.OrangeRed;
+
+            if (progress < 10)
+                return Color.PaleVioletRed;
+
+            if (progress < 15)
+                return Color.YellowGreen;
+
+            else
+                return Color.LawnGreen;
+            
         }
 
 
