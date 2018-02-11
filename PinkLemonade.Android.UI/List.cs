@@ -11,10 +11,11 @@ using Android.Views;
 using Android.Widget;
 using PinkLemonade.Core;
 using PinkLemonade.Core.Models;
+using ZXing.Mobile;
 
 namespace PinkLemonade.Android.UI
 {
-    [Activity(Label = "List")]
+    [Activity(Label = "List", MainLauncher = true, Icon = "@mipmap/icon")]
     public class List : Activity
     {
         List<Token> tableItems = new List<Token>();
@@ -24,10 +25,29 @@ namespace PinkLemonade.Android.UI
         {
             base.OnCreate(savedInstanceState);
 
+            OtpManager manager = new OtpManager();
+
             SetContentView(Resource.Layout.CustomList);
             listView = FindViewById<ListView>(Resource.Id.List);
 
-            OtpManager manager = new OtpManager();
+
+            Button addButton = FindViewById<Button>(Resource.Id.buttonAddToken);
+
+            addButton.Click += async (sender, e) =>
+            {
+                // Initialize the scanner first so it can track the current context
+                MobileBarcodeScanner.Initialize(Application);
+
+                var scanner = new MobileBarcodeScanner();
+
+                var result = await scanner.Scan();
+
+                var newToken = manager.TokenScanned(result.Text);
+
+                tableItems.Add(newToken);
+            };
+
+
             tableItems.AddRange(manager.LoadTokens());
 
             var adpt = new ListAdapter(this, tableItems);

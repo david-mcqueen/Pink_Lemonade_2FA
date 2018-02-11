@@ -4,11 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <Button
-        android:id="@+id/buttonAddToken"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/add_token" />
-    <Button
         android:text="@string/view_tokens"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

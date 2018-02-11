@@ -10,7 +10,7 @@ using PinkLemonade.DataAccess;
 
 namespace PinkLemonade.Android.UI
 {
-    [Activity(Label = "PinkLemonade.Android.UI", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "PinkLemonade.Android.UI", Icon = "@mipmap/icon")]
     public class MainActivity : Activity
     {
         int count = 1;
@@ -26,7 +26,7 @@ namespace PinkLemonade.Android.UI
 
             // Get our button from the layout resource,
             // and attach an event to it
-            Button addButton = FindViewById<Button>(Resource.Id.buttonAddToken);
+            
             Button viewTokensButton = FindViewById<Button>(Resource.Id.buttonViewTokens);
 
             viewTokensButton.Click += (sender, e) =>
@@ -35,17 +35,7 @@ namespace PinkLemonade.Android.UI
                 StartActivity(intent);
             };
 
-            addButton.Click += async (sender, e) =>
-            {
-                // Initialize the scanner first so it can track the current context
-                MobileBarcodeScanner.Initialize(Application);
 
-                var scanner = new MobileBarcodeScanner();
-
-                var result = await scanner.Scan();
-
-                manager.TokenScanned(result.Text);
-            };
         }
     }
 }

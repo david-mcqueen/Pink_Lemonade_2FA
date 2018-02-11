@@ -65,17 +65,14 @@ namespace PinkLemonade.Android.UI
 			// aapt resource value: 0x7f050004
 			public const int Token = 2131034116;
 			
+			// aapt resource value: 0x7f050000
+			public const int buttonAddToken = 2131034112;
+			
 			// aapt resource value: 0x7f050007
-			public const int buttonAddToken = 2131034119;
+			public const int buttonViewTokens = 2131034119;
 			
 			// aapt resource value: 0x7f050008
-			public const int buttonViewTokens = 2131034120;
-			
-			// aapt resource value: 0x7f050009
-			public const int contentFrame = 2131034121;
-			
-			// aapt resource value: 0x7f050000
-			public const int title = 2131034112;
+			public const int contentFrame = 2131034120;
 			
 			static Id()
 			{
