@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace PinkLemonade.Core
 {
-    public class OtpManager
+    public class TokenManager
     {
         private List<Token> _tokens { get; set; }
 
@@ -18,7 +18,7 @@ namespace PinkLemonade.Core
             }
         }
 
-        public OtpManager()
+        public TokenManager()
         {
             _tokens = new List<Token>();
         }

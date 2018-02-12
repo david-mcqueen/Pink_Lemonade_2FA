@@ -15,7 +15,7 @@ using ZXing.Mobile;
 
 namespace PinkLemonade.Android.UI
 {
-    [Activity(Label = "List", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Label = "Pink Lemonade", MainLauncher = true, Icon = "@mipmap/icon")]
     public class List : Activity
     {
         List<Token> tableItems = new List<Token>();
@@ -25,7 +25,7 @@ namespace PinkLemonade.Android.UI
         {
             base.OnCreate(savedInstanceState);
 
-            OtpManager manager = new OtpManager();
+            TokenManager manager = new TokenManager();
             tableItems.AddRange(manager.LoadTokens());
 
             SetContentView(Resource.Layout.CustomList);
